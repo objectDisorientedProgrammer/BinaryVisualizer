@@ -23,6 +23,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
 #define SIZE 8
 
 namespace Ui
@@ -45,12 +46,28 @@ private slots:
 
     void on_bitButton1_clicked();
 
-    //void on_bitButton0_clicked(bool checked);
+    void on_bitButton2_clicked();
+
+    void on_bitButton3_clicked();
+
+    void on_bitButton4_clicked();
+
+    void on_bitButton5_clicked();
+
+    void on_bitButton6_clicked();
+
+    void on_bitButton7_clicked();
+
+    void on_baseSelectComboBox_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;
     int sum;
     bool isOne[SIZE];
+    int base;
+
+    void toggleBitValue(int bitIndex, int value, QPushButton* bitButton);
+    void updateSumLabel();
 };
 
 #endif // MAINWINDOW_H

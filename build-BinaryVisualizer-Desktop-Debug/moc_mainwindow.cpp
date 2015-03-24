@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,24 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x08,
       36,   11,   11,   11, 0x08,
+      60,   11,   11,   11, 0x08,
+      84,   11,   11,   11, 0x08,
+     108,   11,   11,   11, 0x08,
+     132,   11,   11,   11, 0x08,
+     156,   11,   11,   11, 0x08,
+     180,   11,   11,   11, 0x08,
+     210,  204,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0on_bitButton0_clicked()\0"
-    "on_bitButton1_clicked()\0"
+    "on_bitButton1_clicked()\0on_bitButton2_clicked()\0"
+    "on_bitButton3_clicked()\0on_bitButton4_clicked()\0"
+    "on_bitButton5_clicked()\0on_bitButton6_clicked()\0"
+    "on_bitButton7_clicked()\0index\0"
+    "on_baseSelectComboBox_currentIndexChanged(int)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -49,10 +60,16 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->on_bitButton0_clicked(); break;
         case 1: _t->on_bitButton1_clicked(); break;
+        case 2: _t->on_bitButton2_clicked(); break;
+        case 3: _t->on_bitButton3_clicked(); break;
+        case 4: _t->on_bitButton4_clicked(); break;
+        case 5: _t->on_bitButton5_clicked(); break;
+        case 6: _t->on_bitButton6_clicked(); break;
+        case 7: _t->on_bitButton7_clicked(); break;
+        case 8: _t->on_baseSelectComboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData MainWindow::staticMetaObjectExtraData = {
@@ -87,9 +104,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 9;
     }
     return _id;
 }

@@ -28,8 +28,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->sum = 0;
+
     for(int i = 0; i < SIZE; ++i)
         isOne[i] = false;
+
+    this->base = 10;
 }
 
 MainWindow::~MainWindow()
@@ -37,38 +40,85 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_bitButton0_clicked()
+void MainWindow::toggleBitValue(int bitIndex, int value, QPushButton* bitButton)
 {
-    QString temp;
-    if(isOne[0])
+    if(isOne[bitIndex])
     {
-        sum -= 1;
-        ui->bitButton0->setText("0");
-        isOne[0] = false;
+        sum -= value;
+        bitButton->setText("0");
+        isOne[bitIndex] = false;
     }
     else
     {
-        sum += 1;
-        ui->bitButton0->setText("1");
-        isOne[0] = true;
+        sum += value;
+        bitButton->setText("1");
+        isOne[bitIndex] = true;
     }
-    ui->sumLabel->setText(temp.setNum(sum));
+}
+
+void MainWindow::updateSumLabel()
+{
+    QString temp;
+    ui->sumLabel->setText(temp.setNum(sum, base));
+}
+
+void MainWindow::on_bitButton0_clicked()
+{
+    toggleBitValue(0, 1, ui->bitButton0);
+    updateSumLabel();
 }
 
 void MainWindow::on_bitButton1_clicked()
 {
-    QString temp;
-    if(isOne[1])
+    toggleBitValue(1, 2, ui->bitButton1);
+    updateSumLabel();
+}
+
+void MainWindow::on_bitButton2_clicked()
+{
+    toggleBitValue(2, 4, ui->bitButton2);
+    updateSumLabel();
+}
+
+void MainWindow::on_bitButton3_clicked()
+{
+    toggleBitValue(3, 8, ui->bitButton3);
+    updateSumLabel();
+}
+
+void MainWindow::on_bitButton4_clicked()
+{
+    toggleBitValue(4, 16, ui->bitButton4);
+    updateSumLabel();
+}
+
+void MainWindow::on_bitButton5_clicked()
+{
+    toggleBitValue(5, 32, ui->bitButton5);
+    updateSumLabel();
+}
+
+void MainWindow::on_bitButton6_clicked()
+{
+    toggleBitValue(6, 64, ui->bitButton6);
+    updateSumLabel();
+}
+
+void MainWindow::on_bitButton7_clicked()
+{
+    toggleBitValue(7, 128, ui->bitButton7);
+    updateSumLabel();
+}
+
+void MainWindow::on_baseSelectComboBox_currentIndexChanged(int index)
+{
+    switch(index)
     {
-        sum -= 2;
-        ui->bitButton1->setText("0");
-        isOne[1] = false;
+        case 0: base = 10; break;
+        case 1: base = 16; break;
+        case 2: base = 8; break;
+        default:
+            break;
     }
-    else
-    {
-        sum += 2;
-        ui->bitButton1->setText("1");
-        isOne[1] = true;
-    }
-    ui->sumLabel->setText(temp.setNum(sum));
+    updateSumLabel();
 }
