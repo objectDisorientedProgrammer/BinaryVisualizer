@@ -27,9 +27,48 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->sum = 0;
+    for(int i = 0; i < SIZE; ++i)
+        isOne[i] = false;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_bitButton0_clicked()
+{
+    QString temp;
+    if(isOne[0])
+    {
+        sum -= 1;
+        ui->bitButton0->setText("0");
+        isOne[0] = false;
+    }
+    else
+    {
+        sum += 1;
+        ui->bitButton0->setText("1");
+        isOne[0] = true;
+    }
+    ui->sumLabel->setText(temp.setNum(sum));
+}
+
+void MainWindow::on_bitButton1_clicked()
+{
+    QString temp;
+    if(isOne[1])
+    {
+        sum -= 2;
+        ui->bitButton1->setText("0");
+        isOne[1] = false;
+    }
+    else
+    {
+        sum += 2;
+        ui->bitButton1->setText("1");
+        isOne[1] = true;
+    }
+    ui->sumLabel->setText(temp.setNum(sum));
 }

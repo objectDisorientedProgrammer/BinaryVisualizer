@@ -138,8 +138,44 @@
     <property name="editable">
      <bool>false</bool>
     </property>
+    <item>
+     <property name="text">
+      <string extracomment="Base 10">Decimal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string extracomment="Base 16">Hexadecimal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string extracomment="Base 8">Octal</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="sumLabel">
+    <property name="geometry">
+     <rect>
+      <x>537</x>
+      <y>110</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="equalsLabel">
     <property name="geometry">
      <rect>
       <x>460</x>
@@ -167,7 +203,7 @@
      <x>0</x>
      <y>0</y>
      <width>642</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">

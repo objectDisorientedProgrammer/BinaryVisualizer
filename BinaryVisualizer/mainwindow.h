@@ -23,6 +23,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#define SIZE 8
 
 namespace Ui
 {
@@ -40,9 +41,16 @@ public:
 private slots:
 
 
+    void on_bitButton0_clicked();
+
+    void on_bitButton1_clicked();
+
+    //void on_bitButton0_clicked(bool checked);
+
 private:
     Ui::MainWindow *ui;
     int sum;
+    bool isOne[SIZE];
 };
 
 #endif // MAINWINDOW_H
