@@ -41,6 +41,7 @@ public:
     QComboBox *baseSelectComboBox;
     QLabel *sumLabel;
     QLabel *equalsLabel;
+    QComboBox *binaryRepresentComboBox;
     QMenuBar *menubar;
     QMenu *fileMenu;
     QStatusBar *statusbar;
@@ -96,6 +97,9 @@ public:
         equalsLabel->setGeometry(QRect(460, 110, 58, 21));
         equalsLabel->setFont(font);
         equalsLabel->setAlignment(Qt::AlignCenter);
+        binaryRepresentComboBox = new QComboBox(centralwidget);
+        binaryRepresentComboBox->setObjectName(QString::fromUtf8("binaryRepresentComboBox"));
+        binaryRepresentComboBox->setGeometry(QRect(210, 30, 131, 27));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -139,6 +143,15 @@ public:
 #endif // QT_NO_TOOLTIP
         sumLabel->setText(QApplication::translate("MainWindow", "0", 0, QApplication::UnicodeUTF8));
         equalsLabel->setText(QApplication::translate("MainWindow", "=", 0, QApplication::UnicodeUTF8));
+        binaryRepresentComboBox->clear();
+        binaryRepresentComboBox->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Normal", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("MainWindow", "1's Complement", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("MainWindow", "2's Complement", 0, QApplication::UnicodeUTF8)
+        );
+#ifndef QT_NO_TOOLTIP
+        binaryRepresentComboBox->setToolTip(QApplication::translate("MainWindow", "Select a representation.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         fileMenu->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

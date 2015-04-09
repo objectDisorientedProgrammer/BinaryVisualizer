@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,6 +39,7 @@ static const uint qt_meta_data_MainWindow[] = {
      156,   11,   11,   11, 0x08,
      180,   11,   11,   11, 0x08,
      210,  204,   11,   11, 0x08,
+     257,  204,   11,   11, 0x08,
 
        0        // eod
 };
@@ -50,6 +51,7 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_bitButton5_clicked()\0on_bitButton6_clicked()\0"
     "on_bitButton7_clicked()\0index\0"
     "on_baseSelectComboBox_currentIndexChanged(int)\0"
+    "on_binaryRepresentComboBox_currentIndexChanged(int)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -67,6 +69,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_bitButton6_clicked(); break;
         case 7: _t->on_bitButton7_clicked(); break;
         case 8: _t->on_baseSelectComboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->on_binaryRepresentComboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -104,9 +107,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

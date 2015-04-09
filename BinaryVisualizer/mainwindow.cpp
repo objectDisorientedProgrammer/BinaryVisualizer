@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
         isOne[i] = false;
 
     this->base = 10;
+    this->represent = 0;
 }
 
 MainWindow::~MainWindow()
@@ -59,7 +60,38 @@ void MainWindow::toggleBitValue(int bitIndex, int value, QPushButton* bitButton)
 void MainWindow::updateSumLabel()
 {
     QString temp;
+    switch(represent)
+    {
+    case 1: // 1's comp
+        break;
+    case 2: // 2's comp
+        compute2sComp();
+        break;
+    default:
+        break;
+    }
     ui->sumLabel->setText(temp.setNum(sum, base));
+}
+
+void MainWindow::compute2sComp()
+{
+    sum = 0;
+    if(isOne[SIZE-1])
+        sum = -128;
+    if(isOne[0])
+        sum += 1;
+    if(isOne[1])
+        sum += 2;
+    if(isOne[2])
+        sum += 4;
+    if(isOne[3])
+        sum += 8;
+    if(isOne[4])
+        sum += 16;
+    if(isOne[5])
+        sum += 32;
+    if(isOne[6])
+        sum += 64;
 }
 
 void MainWindow::on_bitButton0_clicked()
@@ -119,6 +151,19 @@ void MainWindow::on_baseSelectComboBox_currentIndexChanged(int index)
         case 2: base = 8; break;
         default:
             break;
+    }
+    updateSumLabel();
+}
+
+void MainWindow::on_binaryRepresentComboBox_currentIndexChanged(int index)
+{
+    switch(index)
+    {
+    case 0: represent = 0; break;
+    case 1: represent = 1; break;
+    case 2: represent = 2; break;
+    default:
+        break;
     }
     updateSumLabel();
 }

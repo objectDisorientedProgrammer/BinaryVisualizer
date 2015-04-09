@@ -60,14 +60,19 @@ private slots:
 
     void on_baseSelectComboBox_currentIndexChanged(int index);
 
+    void on_binaryRepresentComboBox_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     int sum;
     bool isOne[SIZE];
     int base;
+    int represent;
 
     void toggleBitValue(int bitIndex, int value, QPushButton* bitButton);
     void updateSumLabel();
+
+    void compute2sComp();
 };
 
 #endif // MAINWINDOW_H
