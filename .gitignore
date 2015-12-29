@@ -1,0 +1,3 @@
+build-BinaryVisualizer-Desktop-Debug/*.o
+build-BinaryVisualizer-Desktop-Debug/*.cpp
+build-BinaryVisualizer-Desktop-Debug/*.h
