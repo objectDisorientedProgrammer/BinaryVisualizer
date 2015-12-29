@@ -68,6 +68,7 @@ private:
 
     void toggleBitValue(int bitIndex, int value, QPushButton* bitButton);
     void updateSumLabel();
+    int collectNonMSBBitValues();
 
     void compute1sComp();
     void compute2sComp();

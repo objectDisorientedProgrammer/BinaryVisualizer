@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    // center window on screen
+    // center window on screen and display
     w.move(QApplication::desktop()->screen()->rect().center() - w.rect().center());
     w.show();
 

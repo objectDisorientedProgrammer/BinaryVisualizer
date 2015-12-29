@@ -73,11 +73,38 @@ void MainWindow::toggleBitValue(int bitIndex, int value, QPushButton* bitButton)
     }
 }
 
+int MainWindow::collectNonMSBBitValues()
+{
+    int value = 0;
+    if(isOne[0])
+        value += 1;
+    if(isOne[1])
+        value += 2;
+    if(isOne[2])
+        value += 4;
+    if(isOne[3])
+        value += 8;
+    if(isOne[4])
+        value += 16;
+    if(isOne[5])
+        value += 32;
+    if(isOne[6])
+        value += 64;
+
+    return value;
+}
+
 void MainWindow::updateSumLabel()
 {
     QString temp;
+
     switch(represent)
     {
+    case 0: // Unsigned value
+        sum = collectNonMSBBitValues();
+        if(isOne[SIZE - 1])
+            sum += 128;
+        break;
     case 1: // 1's comp
         // TODO
         compute1sComp();
@@ -93,29 +120,24 @@ void MainWindow::updateSumLabel()
 
 void MainWindow::compute1sComp()
 {
+    sum = collectNonMSBBitValues();
     if(isOne[SIZE - 1])
-        sum *= -1;
+    {
+        if(sum == 0)
+        {
+            QString negativeZero = "-0"; // TODO not working
+            ui->sumLabel->setText(negativeZero);
+        }
+        else
+            sum *= -1;
+    }
 }
 
 void MainWindow::compute2sComp()
 {
-    sum = 0;
+    sum = collectNonMSBBitValues();
     if(isOne[SIZE - 1])
-        sum = -128;
-    if(isOne[0])
-        sum += 1;
-    if(isOne[1])
-        sum += 2;
-    if(isOne[2])
-        sum += 4;
-    if(isOne[3])
-        sum += 8;
-    if(isOne[4])
-        sum += 16;
-    if(isOne[5])
-        sum += 32;
-    if(isOne[6])
-        sum += 64;
+        sum -= 128;
 }
 
 void MainWindow::on_bitButton0_clicked()
