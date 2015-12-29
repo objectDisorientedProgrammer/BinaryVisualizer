@@ -27,18 +27,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->sum = 0;
 
+    // initialize strings
+    this->author = "Douglas Chidester";
+    this->version = "v0.1.0";
+
+    this->sum = 0;
     for(int i = 0; i < SIZE; ++i)
         isOne[i] = false;
 
     this->base = 10;
     this->represent = 0;
+
+    // set shortcut to File->Quit menu item
+    ui->fileMenu->setShortcutEnabled(QKeySequence(tr("Alt+F")));
+    connect(ui->actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    // set shortcut to Help->About menu item
+    ui->menuHelp->setShortcutEnabled(QKeySequence(tr("Alt+H")));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::showAbout()
+{
+    QMessageBox::information(this, "About", "Created by " + this->author + "\n\nVersion " + this->version);
 }
 
 void MainWindow::toggleBitValue(int bitIndex, int value, QPushButton* bitButton)
@@ -63,6 +79,8 @@ void MainWindow::updateSumLabel()
     switch(represent)
     {
     case 1: // 1's comp
+        // TODO
+        compute1sComp();
         break;
     case 2: // 2's comp
         compute2sComp();
@@ -73,10 +91,16 @@ void MainWindow::updateSumLabel()
     ui->sumLabel->setText(temp.setNum(sum, base));
 }
 
+void MainWindow::compute1sComp()
+{
+    if(isOne[SIZE - 1])
+        sum *= -1;
+}
+
 void MainWindow::compute2sComp()
 {
     sum = 0;
-    if(isOne[SIZE-1])
+    if(isOne[SIZE - 1])
         sum = -128;
     if(isOne[0])
         sum += 1;

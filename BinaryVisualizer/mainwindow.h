@@ -24,6 +24,10 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QtGui/QMessageBox>
+#include <QRect>
+#include <QWidget>
+
 #define SIZE 8
 
 namespace Ui
@@ -40,27 +44,18 @@ public:
     ~MainWindow();
 
 private slots:
-
-
     void on_bitButton0_clicked();
-
     void on_bitButton1_clicked();
-
     void on_bitButton2_clicked();
-
     void on_bitButton3_clicked();
-
     void on_bitButton4_clicked();
-
     void on_bitButton5_clicked();
-
     void on_bitButton6_clicked();
-
     void on_bitButton7_clicked();
 
     void on_baseSelectComboBox_currentIndexChanged(int index);
-
     void on_binaryRepresentComboBox_currentIndexChanged(int index);
+    void showAbout();
 
 private:
     Ui::MainWindow *ui;
@@ -68,10 +63,13 @@ private:
     bool isOne[SIZE];
     int base;
     int represent;
+    QString author;
+    QString version;
 
     void toggleBitValue(int bitIndex, int value, QPushButton* bitButton);
     void updateSumLabel();
 
+    void compute1sComp();
     void compute2sComp();
 };
 
