@@ -94,7 +94,7 @@ int MainWindow::collectNonMSBBitValues()
 
     return value;
 }
-#include <iostream>
+
 void MainWindow::updateSumLabel()
 {
     QString temp;
@@ -103,7 +103,6 @@ void MainWindow::updateSumLabel()
     {
     case Unsigned: // Unsigned values
         sum = collectNonMSBBitValues();
-        std::cout << sum;
         if(isOne[bit7])
             sum += bit7Value;
         break;
@@ -115,7 +114,9 @@ void MainWindow::updateSumLabel()
         compute2sComp();
         break;
     default:
-        std::cout << "defaulted";
+        sum = collectNonMSBBitValues();
+        if(isOne[bit7])
+            sum += bit7Value;
         break;
     }
     ui->sumLabel->setText(temp.setNum(sum, base));
@@ -195,13 +196,13 @@ void MainWindow::on_baseSelectComboBox_currentIndexChanged(int index)
 {
     switch(index)
     {
-        case 0:
+        case BaseDecimalIndex:
             base = Decimal;
             break;
-        case 1:
+        case BaseHexIndex:
             base = Hexadecimal;
             break;
-        case 2:
+        case BaseOctalIndex:
             base = Octal;
             break;
         default:

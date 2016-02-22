@@ -29,8 +29,6 @@
 #include <QWidget>
 
 #define SIZE 8
-#define ONES_COMPLEMENT 1
-#define TWOS_COMPLEMENT 2
 
 namespace Ui
 {
@@ -66,6 +64,7 @@ private:
     enum BitValue { bit0Value = 1, bit1Value = 2, bit2Value = 4, bit3Value = 8,
                     bit4Value = 16, bit5Value = 32, bit6Value = 64, bit7Value = 128 };
     enum Base { Octal = 8, Decimal = 10, Hexadecimal = 16 };
+    enum baseSelectComboBoxIndex { BaseDecimalIndex = 0, BaseHexIndex = 1, BaseOctalIndex = 2 };
     int sum;
     bool isOne[SIZE];
     int base;
