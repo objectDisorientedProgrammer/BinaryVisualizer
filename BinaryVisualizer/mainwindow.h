@@ -44,18 +44,18 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_bitButton0_clicked();
-    void on_bitButton1_clicked();
-    void on_bitButton2_clicked();
-    void on_bitButton3_clicked();
-    void on_bitButton4_clicked();
-    void on_bitButton5_clicked();
-    void on_bitButton6_clicked();
-    void on_bitButton7_clicked();
+    void on_bitButton0_clicked(void);
+    void on_bitButton1_clicked(void);
+    void on_bitButton2_clicked(void);
+    void on_bitButton3_clicked(void);
+    void on_bitButton4_clicked(void);
+    void on_bitButton5_clicked(void);
+    void on_bitButton6_clicked(void);
+    void on_bitButton7_clicked(void);
 
-    void on_baseSelectComboBox_currentIndexChanged(int index);
-    void on_binaryRepresentComboBox_currentIndexChanged(int index);
-    void showAbout();
+    void on_baseSelectComboBox_currentIndexChanged(const int index);
+    void on_binaryRepresentComboBox_currentIndexChanged(const int index);
+    void showAbout(void);
 
 private:
     Ui::MainWindow *ui;
@@ -72,12 +72,12 @@ private:
     QString author;
     QString version;
 
-    void toggleBitValue(int bitIndex, int value, QPushButton* bitButton);
-    void updateSumLabel();
-    int collectNonMSBBitValues();
+    void toggleBitValue(const int bitIndex, const int value, QPushButton* bitButton);
+    void updateSumLabel(void);
+    int collectNonMSBBitValues(void);
 
-    void compute1sComp();
-    void compute2sComp();
+    void compute1sComp(void);
+    void compute2sComp(void);
 };
 
 #endif // MAINWINDOW_H
