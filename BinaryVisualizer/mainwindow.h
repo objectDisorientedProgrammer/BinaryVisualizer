@@ -59,6 +59,12 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    enum Representation { Unsigned = 0, OnesComplement = 1, TwosComplement = 2 };
+    enum BitNumber { bit0 = 0, bit1 = 1, bit2 = 2, bit3 = 3, bit4 = 4, bit5 = 5, bit6 = 6, bit7 = 7 };
+    enum BitValue { bit0Value = 1, bit1Value = 2, bit2Value = 4, bit3Value = 8,
+                    bit4Value = 16, bit5Value = 32, bit6Value = 64, bit7Value = 128 };
+    enum Base { Octal = 8, Decimal = 10, Hexadecimal = 16 };
+    enum baseSelectComboBoxIndex { BaseDecimalIndex = 0, BaseHexIndex = 1, BaseOctalIndex = 2 };
     int sum;
     bool isOne[SIZE];
     int base;

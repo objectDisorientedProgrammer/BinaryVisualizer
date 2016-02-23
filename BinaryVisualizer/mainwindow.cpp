@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     for(int i = 0; i < SIZE; ++i)
         isOne[i] = false;
 
-    this->base = 10;
+    this->base = Decimal;
     this->represent = 0;
 
     // set shortcut to File->Quit menu item
@@ -76,20 +76,21 @@ void MainWindow::toggleBitValue(int bitIndex, int value, QPushButton* bitButton)
 int MainWindow::collectNonMSBBitValues()
 {
     int value = 0;
-    if(isOne[0])
-        value += 1;
-    if(isOne[1])
-        value += 2;
-    if(isOne[2])
-        value += 4;
-    if(isOne[3])
-        value += 8;
-    if(isOne[4])
-        value += 16;
-    if(isOne[5])
-        value += 32;
-    if(isOne[6])
-        value += 64;
+
+    if(isOne[bit0])
+        value += bit0Value;
+    if(isOne[bit1])
+        value += bit1Value;
+    if(isOne[bit2])
+        value += bit2Value;
+    if(isOne[bit3])
+        value += bit3Value;
+    if(isOne[bit4])
+        value += bit4Value;
+    if(isOne[bit5])
+        value += bit5Value;
+    if(isOne[bit6])
+        value += bit6Value;
 
     return value;
 }
@@ -100,19 +101,22 @@ void MainWindow::updateSumLabel()
 
     switch(represent)
     {
-    case 0: // Unsigned value
+    case Unsigned: // Unsigned values
         sum = collectNonMSBBitValues();
-        if(isOne[SIZE - 1])
-            sum += 128;
+        if(isOne[bit7])
+            sum += bit7Value;
         break;
-    case 1: // 1's comp
+    case OnesComplement:
         // TODO
         compute1sComp();
         break;
-    case 2: // 2's comp
+    case TwosComplement:
         compute2sComp();
         break;
     default:
+        sum = collectNonMSBBitValues();
+        if(isOne[bit7])
+            sum += bit7Value;
         break;
     }
     ui->sumLabel->setText(temp.setNum(sum, base));
@@ -121,7 +125,7 @@ void MainWindow::updateSumLabel()
 void MainWindow::compute1sComp()
 {
     sum = collectNonMSBBitValues();
-    if(isOne[SIZE - 1])
+    if(isOne[bit7])
     {
         if(sum == 0)
         {
@@ -136,55 +140,55 @@ void MainWindow::compute1sComp()
 void MainWindow::compute2sComp()
 {
     sum = collectNonMSBBitValues();
-    if(isOne[SIZE - 1])
-        sum -= 128;
+    if(isOne[bit7])
+        sum -= bit7Value;
 }
 
 void MainWindow::on_bitButton0_clicked()
 {
-    toggleBitValue(0, 1, ui->bitButton0);
+    toggleBitValue(bit0, bit0Value, ui->bitButton0);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton1_clicked()
 {
-    toggleBitValue(1, 2, ui->bitButton1);
+    toggleBitValue(bit1, bit1Value, ui->bitButton1);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton2_clicked()
 {
-    toggleBitValue(2, 4, ui->bitButton2);
+    toggleBitValue(bit2, bit2Value, ui->bitButton2);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton3_clicked()
 {
-    toggleBitValue(3, 8, ui->bitButton3);
+    toggleBitValue(bit3, bit3Value, ui->bitButton3);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton4_clicked()
 {
-    toggleBitValue(4, 16, ui->bitButton4);
+    toggleBitValue(bit4, bit4Value, ui->bitButton4);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton5_clicked()
 {
-    toggleBitValue(5, 32, ui->bitButton5);
+    toggleBitValue(bit5, bit5Value, ui->bitButton5);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton6_clicked()
 {
-    toggleBitValue(6, 64, ui->bitButton6);
+    toggleBitValue(bit6, bit6Value, ui->bitButton6);
     updateSumLabel();
 }
 
 void MainWindow::on_bitButton7_clicked()
 {
-    toggleBitValue(7, 128, ui->bitButton7);
+    toggleBitValue(bit7, bit7Value, ui->bitButton7);
     updateSumLabel();
 }
 
@@ -192,10 +196,17 @@ void MainWindow::on_baseSelectComboBox_currentIndexChanged(int index)
 {
     switch(index)
     {
-        case 0: base = 10; break;
-        case 1: base = 16; break;
-        case 2: base = 8; break;
+        case BaseDecimalIndex:
+            base = Decimal;
+            break;
+        case BaseHexIndex:
+            base = Hexadecimal;
+            break;
+        case BaseOctalIndex:
+            base = Octal;
+            break;
         default:
+            base = Decimal;
             break;
     }
     updateSumLabel();
@@ -205,11 +216,18 @@ void MainWindow::on_binaryRepresentComboBox_currentIndexChanged(int index)
 {
     switch(index)
     {
-    case 0: represent = 0; break;
-    case 1: represent = 1; break;
-    case 2: represent = 2; break;
-    default:
-        break;
+        case Unsigned:
+            represent = Unsigned;
+            break;
+        case OnesComplement:
+            represent = OnesComplement;
+            break;
+        case TwosComplement:
+            represent = TwosComplement;
+            break;
+        default:
+            represent = Unsigned;
+            break;
     }
     updateSumLabel();
 }
