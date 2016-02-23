@@ -57,7 +57,7 @@ void MainWindow::showAbout()
     QMessageBox::information(this, "About", "Created by " + this->author + "\n\nVersion " + this->version);
 }
 
-void MainWindow::toggleBitValue(int bitIndex, int value, QPushButton* bitButton)
+void MainWindow::toggleBitValue(const int bitIndex, const int value, QPushButton* bitButton)
 {
     if(isOne[bitIndex])
     {
@@ -192,7 +192,7 @@ void MainWindow::on_bitButton7_clicked()
     updateSumLabel();
 }
 
-void MainWindow::on_baseSelectComboBox_currentIndexChanged(int index)
+void MainWindow::on_baseSelectComboBox_currentIndexChanged(const int index)
 {
     switch(index)
     {
@@ -212,7 +212,7 @@ void MainWindow::on_baseSelectComboBox_currentIndexChanged(int index)
     updateSumLabel();
 }
 
-void MainWindow::on_binaryRepresentComboBox_currentIndexChanged(int index)
+void MainWindow::on_binaryRepresentComboBox_currentIndexChanged(const int index)
 {
     switch(index)
     {

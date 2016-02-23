@@ -53,8 +53,8 @@ private slots:
     void on_bitButton6_clicked();
     void on_bitButton7_clicked();
 
-    void on_baseSelectComboBox_currentIndexChanged(int index);
-    void on_binaryRepresentComboBox_currentIndexChanged(int index);
+    void on_baseSelectComboBox_currentIndexChanged(const int index);
+    void on_binaryRepresentComboBox_currentIndexChanged(const int index);
     void showAbout();
 
 private:
@@ -72,7 +72,7 @@ private:
     QString author;
     QString version;
 
-    void toggleBitValue(int bitIndex, int value, QPushButton* bitButton);
+    void toggleBitValue(const int bitIndex, const int value, QPushButton* bitButton);
     void updateSumLabel();
     int collectNonMSBBitValues();
 
