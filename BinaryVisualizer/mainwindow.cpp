@@ -21,6 +21,7 @@
 
 #include "mainwindow.h"
 #include "ui_binvis-MainWindow.h"
+#include <QShortcut>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // initialize strings
     this->author = "Douglas Chidester";
-    this->version = "v0.1.0";
+    this->version = "0.1.1";
 
     this->sum = 0;
     for(int i = 0; i < SIZE; ++i)
@@ -39,11 +40,14 @@ MainWindow::MainWindow(QWidget *parent) :
     this->base = Decimal;
     this->represent = 0;
 
+    // TODO #10 https://github.com/objectDisorientedProgrammer/BinaryVisualizer/issues/10
     // set shortcut to File->Quit menu item
-    ui->fileMenu->setShortcutEnabled(QKeySequence(tr("Alt+F")));
+    //ui->fileMenu->setShortcutEnabled(QKeySequence(tr("Alt+F")));
     connect(ui->actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+    //QShortcut* shortcut = new QShortcut(QKeySequence(tr("Ctrl+O", "File|Quit")), ui->fileMenu);
+    //connect(ui->actionQuit, SIGNAL(shortcut->activated()), qApp, SLOT(quit()));
     // set shortcut to Help->About menu item
-    ui->menuHelp->setShortcutEnabled(QKeySequence(tr("Alt+H")));
+    //ui->menuHelp->setShortcutEnabled(QKeySequence(tr("Alt+H")));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
 }
 
@@ -107,7 +111,6 @@ void MainWindow::updateSumLabel()
             sum += bit7Value;
         break;
     case OnesComplement:
-        // TODO
         compute1sComp();
         break;
     case TwosComplement:
@@ -129,7 +132,8 @@ void MainWindow::compute1sComp()
     {
         if(sum == 0)
         {
-            QString negativeZero = "-0"; // TODO not working
+            // TODO #11 https://github.com/objectDisorientedProgrammer/BinaryVisualizer/issues/11
+            QString negativeZero = "-0";
             ui->sumLabel->setText(negativeZero);
         }
         else

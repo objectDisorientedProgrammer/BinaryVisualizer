@@ -24,7 +24,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
-#include <QtGui/QMessageBox>
+#include <QMessageBox>
 #include <QRect>
 #include <QWidget>
 
@@ -40,7 +40,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:

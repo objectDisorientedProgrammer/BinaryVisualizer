@@ -15,8 +15,11 @@
     <pointsize>10</pointsize>
    </font>
   </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Binary Visualizer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="bitButton7">
@@ -231,7 +234,7 @@
      <x>0</x>
      <y>0</y>
      <width>642</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">
