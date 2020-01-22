@@ -2,7 +2,7 @@
  * mainwindow.h
  * created: October 9, 2014
  *
- * {one line to give the program's name and a brief idea of what it does.}
+ * Binary Visualizer displays bits and their value with different types of representations and base outputs.
  * Copyright (C) 2014 Douglas Chidester
  *
  * This program is free software: you can redistribute it and/or modify
